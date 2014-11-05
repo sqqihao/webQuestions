@@ -1,0 +1,408 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>IE_compitable</title>
+</head>
+<body>
+<h3>
+    1.如何清除图片下方出现几像素的空白间隙？
+</h3>
+<p>
+    a.clear{clear:both};
+</p>
+<p>
+    b.img{vertical-align:top;}
+</p>
+<p>
+    c.
+    <code>
+        #test{font-size:0;line-height:0;}
+    </code>
+    &nbsp;&nbsp; #test为img的父元素
+</p>
+<p>
+    <b>
+        2.如何让文本垂直对齐文本输入框？
+    </b>
+    <br>
+    &nbsp;&nbsp;
+    <code>
+        input{vertical-align:middle;}
+    </code>
+</p>
+<h3>
+    3.如何让单行文本在容器内垂直居中
+    <code>
+        <br>
+        #test{height:25px;line-height:25px;}
+    </code>
+</h3>
+<p>
+    4.如何让超链接访问后和访问前的颜色不同且访问后仍保留hover和active效果？
+</p>
+<p>
+    L-V-H-A
+</p>
+<p>
+    5.如何使文本溢出边界不换行强制在一行内显示？
+    <code>
+        <br>
+        #test{width:150px;white-space:nowrap;}
+        <br>
+    </code>
+</p>
+<h3>
+    6.如何使文本溢出边界显示为省略号？
+    <br>
+</h3>
+<pre>
+    <code>
+        #test{width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    </code>
+</pre>
+<h3>
+    7.如何使连续的长字符串自动换行？
+</h3>
+<pre>
+    <code>
+        #test{width:150px;word-wrap:break-word;}
+    </code>
+</pre>
+<p>
+    8.如何清除浮动？
+</p>
+<p>
+    a..clear{clear:both;}
+</p>
+<pre>
+    <code>
+        b.#test{display:block;zoom:1;overflow:hidden;}
+        <br>
+        c.
+    </code>
+    <code>
+        #test{zoom:1;} #test:after{display:block;clear:both;visibility:hidden;height:0;content:'';}
+    </code>
+</pre>
+<p>
+    a：img的alt与title有何异同？
+    b：strong与em的异同？
+</p>
+<pre>
+	alt(alt text):为不能显示图像、窗体或applets的用户代理（UA），alt属性用来指定替换文字。替换文字的语言由lang属性指定。(在IE浏览器下会在没有title时把alt当成 tool tip显示)
+    title(tool tip):该属性为设置该属性的元素提供建议性的信息。
+    strong:粗体强调标签
+    em:斜体强调标签
+    相同点:都起强调作用
+    不同点:a:em,2个字母;strong,6个字母.
+           b:em,强调;strong,更强烈的强调
+           c:em,表示内容的强调点;strong,表示内容的重要性
+</pre>
+<p>
+清除浮动的方法，各有什么特点？
+</p>
+<pre>	
+    a：overflow:hidden
+    b：clear:both
+    c：clearfix:after{} 伪类
+    .cf:before, .cf:after {
+        content:"";
+        display:table;
+    }
+    .cf:after {
+        clear:both;
+    }
+    .cf {
+        zoom:1;
+    }
+</pre>
+<p>
+    #test为浮动元素的父元素
+</p>
+<h3>
+    9.如何让已知高度的容器在页面中水平垂直居中？
+    <code>
+        <br>
+        #test{position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px
+        0 0 -100px;}
+    </code>
+</h3>
+<p>
+    Know More：
+    <a target="_blank" rel="nofollow" href="http://blog.doyoe.com/article.asp?id=74">
+        已知高度的容器如何在页面中水平垂直居中
+    </a>
+</p>
+<h3>
+    10.如何让未知尺寸的图片在已知宽高的容器内水平垂直居中？
+    <br>
+</h3>
+<blockquote>
+    <pre>
+        <code>
+            #test{display:table-cell;*display:block;*position:relative;width:200px;height:200px;text-align:center;vertical-align:middle;}
+            #test p{*position:absolute;*top:50%;*left:50%;margin:0;} #test p img{*position:relative;*top:-50%;*left:-50%;vertical-align:middle;}
+        </code>
+    </pre>
+</blockquote>
+<p>
+    #test是img的祖父节点，p是img的父节点。Know More：
+    <a target="_blank" rel="nofollow" href="http://blog.doyoe.com/article.asp?id=159">
+        未知尺寸的图片如何水平垂直居中
+    </a>
+</p>
+<h3>
+    11.如何设置span的宽度和高度（即如何设置内联元素的宽高）？
+    <br>
+</h3>
+<pre>
+    <code>
+        span{display:block;width:200px;height:100px;}
+    </code>
+</pre>
+<h3>
+    12.如何给一个元素定义多个不同的css规则？
+</h3>
+<blockquote>
+    <pre>
+        <code>
+            .a{color:#f00;} .b{background:#eee;} .c{background:#ccc;} &lt;div class="a
+            b"&gt;测试1&lt;/div&gt; &lt;div class="a c"&gt;测试2&lt;/div&gt;
+        </code>
+    </pre>
+</blockquote>
+<p>
+    多个规则之间使用空格分开，并且只有class能同时使用多个规则，id不可以
+</p>
+<p>
+    13.如何让某个元素充满整个页面？
+    <code>
+        <br>
+        html,body{height:100%;margin:0;} #test{height:100%;}
+    </code>
+</p>
+<p>
+    14.如何让某个元素距离窗口上右下左4边各10像素？
+</p>
+<div>
+    <p>
+        <strong>
+            方法：
+        </strong>
+    </p>
+    <blockquote>
+        <pre>
+            <code>
+                html,body{height:100%;margin:0;} html{_padding:10px;}
+                <br>
+            </code>
+            <code>
+                #test{position:absolute;top:10px;right:10px;bottom:10px;left:10px;_position:static;_height:100%;}
+            </code>
+            <br>
+            <br>
+            15.如何容器透明，内容不透明？
+        </pre>
+        <pre>
+            <code>
+                方法一：
+                <br>
+                .outer{width:200px;height:200px;background:#000;filter:alpha(opacity=20);opacity:.2;}
+                .inner{width:200px;height:200px;margin-top:-200px;} &lt;div class="outer"&gt;&lt;!--我是透明的容器--&gt;&lt;/div&gt;
+                &lt;div class="inner"&gt;我是不透明的内容&lt;/div&gt;
+            </code>
+            <br>
+            <code>
+                <br>
+            </code>
+        </pre>
+        <p>
+            <strong>
+                方法2：
+            </strong>
+        </p>
+        <blockquote>
+            <pre>
+                <code>
+                    .outer{width:200px;height:200px;background:rgba(0,0,0,.2);background:#000\9;filter:alpha(opacity=20)\9;}
+                    .outer .inner{position:relative\9;} &lt;div class="outer"&gt; &lt;div class="inner"&gt;我是不透明的内容&lt;/div&gt;
+                    &lt;/div&gt;
+                </code>
+            </pre>
+        </blockquote>
+        <pre>
+            <br>
+        </pre>
+        <h3>
+            13.如何做1像素细边框的table？
+        </h3>
+        <div>
+            <p>
+                <strong>
+                    方法1：
+                </strong>
+            </p>
+            <blockquote>
+                <pre>
+                    <code>
+                        #test{border-collapse:collapse;border:1px solid #ddd;} #test th,#test
+                        td{border:1px solid #ddd;} &lt;table id="test"&gt; &lt;tr&gt;&lt;th&gt;姓名&lt;/th&gt;&lt;td&gt;Joy
+                        Du&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;th&gt;年龄&lt;/th&gt;&lt;td&gt;26&lt;/td&gt;&lt;/tr&gt;
+                        &lt;/table&gt;
+                    </code>
+                </pre>
+            </blockquote>
+        </div>
+        <div>
+            <p>
+                <strong>
+                    方法2：
+                </strong>
+            </p>
+        </div>
+        <pre>
+            <code>
+                #test{border-spacing:1px;background:#ddd;} #test tr{background:#fff;}
+                &lt;table id="test" cellspacing="1"&gt; &lt;tr&gt;&lt;th&gt;姓名&lt;/th&gt;&lt;td&gt;Joy
+                Du&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;th&gt;年龄&lt;/th&gt;&lt;td&gt;26&lt;/td&gt;&lt;/tr&gt;
+                &lt;/table&gt;
+                <br>
+                <br>
+            </code>
+        </pre>
+        <h3>
+            16.如何使页面文本行距始终保持为n倍字体大小的基调？
+        </h3>
+        <div>
+            <p>
+                <strong>
+                    方法：
+                </strong>
+            </p>
+            <blockquote>
+                <pre>
+                    <code>
+                        body{line-height:n;}
+                    </code>
+                </pre>
+            </blockquote>
+        </div>
+        <pre>
+            17。标准模式Standard mode和怪异模式Quirks mode下的盒模型区别？
+        </pre>
+        <div>
+            <p>
+                <strong>
+                    方法：
+                </strong>
+            </p>
+            <div>
+                <pre>
+                    标准模式下：Element width = width + padding + border 怪异模式下：Element width = width
+                </pre>
+            </div>
+        </div>
+        <pre>
+            <code>
+                <br>
+                18.
+            </code>
+            <br>
+        </pre>
+        <h3>
+            以图换字的几种方法及优劣分析
+        </h3>
+        <div>
+            <p>
+                <strong>
+                    思路1：使用text-indent的负值，将内容移出容器
+                </strong>
+            </p>
+            <blockquote>
+                <pre>
+                    <code>
+                        .test1{width:200px;height:50px;text-indent:-9999px;background:#eee url(*.png)
+                        no-repeat;} &lt;div class="test"&gt;以图换字之内容负缩进法&lt;/div&gt;
+                    </code>
+                </pre>
+            </blockquote>
+            <p>
+                该方法优点在于结构简洁，不理想的地方：1.由于使用场景不同，负缩进的值可能会不一样，不易抽象成公用样式；2.当该元素为链接时，在非IE下虚线框将变得不完整；3.如果该元素被定义为内联级或者内联块级，不同浏览器下会有较多的差异
+            </p>
+        </div>
+        <div>
+            <p>
+                <strong>
+                    思路2：使用display:none或visibility:hidden将内容隐藏；
+                </strong>
+            </p>
+            <blockquote>
+                <pre>
+                    <code>
+                        .test{width:200px;height:50px;background:#eee url(*.png) no-repeat;} .test
+                        span{visibility:hidden;/* 或者display:none */} &lt;div class="test"&gt;&lt;span&gt;以图换字之内容隐藏法&lt;/span&gt;&lt;/div&gt;
+                    </code>
+                </pre>
+            </blockquote>
+            <p>
+                该方法优点在于兼容性强并且容易抽象成公用样式，缺点在于结构较复杂
+            </p>
+        </div>
+        <div>
+            <p>
+                <strong>
+                    思路3：使用padding或者line-height将内容挤出容器之外；
+                </strong>
+            </p>
+            <blockquote>
+                <pre>
+                    <code>
+                        .test{overflow:hidden;width:200px;height:0;padding-top:50px;background:#eee
+                        url(*.png) no-repeat;} .test{overflow:hidden;width:200px;height:50px;line-height:50;background:#eee
+                        url(*.jpg) no-repeat;} &lt;div class="test"&gt;以图换字之内容排挤法&lt;/div&gt;
+                    </code>
+                </pre>
+            </blockquote>
+            <p>
+                该方法优点在于结构简洁，缺点在于：1.由于使用场景不同，padding或line-height的值可能会不一样，不易抽象成公用样式；2.要兼容IE5.5及更早浏览器还得hack
+            </p>
+        </div>
+        <div>
+            <p>
+                <strong>
+                    思路4：使用超小字体和文本全透明法；
+                </strong>
+            </p>
+            <blockquote>
+                <pre>
+                    <code>
+                        .test{overflow:hidden;width:200px;height:50px;font-size:0;line-height:0;color:rgba(0,0,0,0);background:#eee
+                        url(*.png) no-repeat;} &lt;div class="test"&gt;以图换字之超小字体+文本全透明法&lt;/div&gt;
+                    </code>
+                </pre>
+            </blockquote>
+        </div>
+        <h3>
+            19.如何在文本框中禁用中文输入法？
+        </h3>
+        <div>
+            <p>
+                <strong>
+                    方法：
+                </strong>
+            </p>
+            <blockquote>
+                <pre>
+                    <code>
+                        input,textarea{ime-mode:disabled};
+                        <br>
+                        <br>
+                    </code>
+                </pre>
+            </blockquote>
+        </div>
+    </blockquote>
+</div>
+</body>
+</html>

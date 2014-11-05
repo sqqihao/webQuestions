@@ -1,0 +1,1463 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>JS面试题</title>
+</head>
+<body>
+<div>
+    <p>
+        <strong>
+            1,
+        </strong>
+        <strong>
+            判断字符串是否是这样组成的，第一个必须是字母，后面可以是字母、数字、下划线，总长度为5-20
+        </strong>
+    </p>
+    <pre>
+        var reg = /^[a-zA-Z][a-zA-Z_0-9]{4,19}$/;
+    </pre>
+    <pre>
+        reg.test("a1a__a1a__a1a__a1a__");
+    </pre>
+    <p>
+        <strong>
+            2
+        </strong>
+        <strong>
+            ，截取字符串abcdefg的efg
+        </strong>
+    </p>
+    <pre>
+        var str = "abcdefg";
+    </pre>
+    <pre>
+        if (/efg/.test(str)) {
+    </pre>
+    <pre>
+        var efg = str.substr(str.indexOf("efg"), 3);
+    </pre>
+    <pre>
+        alert(efg);
+    </pre>
+    <p>
+        }
+    </p>
+    <p>
+        &nbsp;
+    </p>
+    <p>
+        <strong>
+            3
+        </strong>
+        <strong>
+            ，判断一个字符串中出现次数最多的字符，统计这个次数
+        </strong>
+    </p>
+    <pre>
+        //将字符串的字符保存在一个hash table中，key是字符，value是这个字符出现的次数
+    </pre>
+    <pre>
+        var str = "abcdefgaddda";
+    </pre>
+    <pre>
+        var obj = {};
+    </pre>
+    <pre>
+        for (var i = 0, l = str.length; i &amp;lt; l; i++) {
+    </pre>
+    <pre>
+        var key = str[i];
+    </pre>
+    <pre>
+        if (!obj[key]) {
+    </pre>
+    <pre>
+        obj[key] = 1;
+    </pre>
+    <pre>
+        } else {
+    </pre>
+    <pre>
+        obj[key]++;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        /*遍历这个hash table，获取value最大的key和value*/
+    </pre>
+    <pre>
+        var max = -1;
+    </pre>
+    <pre>
+        var max_key = "";
+    </pre>
+    <pre>
+        var key;
+    </pre>
+    <pre>
+        for (key in obj) {
+    </pre>
+    <pre>
+        if (max &lt; obj[key]) {
+    </pre>
+    <pre>
+        max = obj[key];
+    </pre>
+    <pre>
+        max_key = key;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        alert("max:"+max+" max_key:"+max_key);
+    </pre>
+    <p>
+        <strong>
+            4
+        </strong>
+        <strong>
+            ，IE与FF脚本兼容性问题
+        </strong>
+    </p>
+    <p>
+        (1) window.event：
+    </p>
+    <p>
+        表示当前的事件对象，IE有这个对象，FF没有，FF通过给事件处理函数传递事件对象
+    </p>
+    <p>
+        (2) 获取事件源
+    </p>
+    <p>
+        IE用srcElement获取事件源，而FF用target获取事件源
+    </p>
+    <p>
+        (3) 添加，去除事件
+    </p>
+    <p>
+        IE：element.attachEvent(“onclick”, function) element.detachEvent(“onclick”,
+        function)
+    </p>
+    <p>
+        FF：element.addEventListener(“click”, function, true) element.removeEventListener(“click”,
+        function, true)
+    </p>
+    <p>
+        (4) 获取标签的自定义属性
+    </p>
+    <p>
+        IE：div1.value或div1[“value”]
+    </p>
+    <p>
+        FF：可用div1.getAttribute(“value”)
+    </p>
+    <p>
+        (5) document.getElementByName()和document.all[name]
+    </p>
+    <p>
+        IE；document.getElementByName()和document.all[name]均不能获取div元素
+    </p>
+    <p>
+        FF：可以
+    </p>
+    <p>
+        (6) input.type的属性
+    </p>
+    <p>
+        IE：input.type只读
+    </p>
+    <p>
+        FF：input.type可读写
+    </p>
+    <p>
+        (7) innerText textContent outerHTML
+    </p>
+    <p>
+        IE：支持innerText, outerHTML
+    </p>
+    <p>
+        FF：支持textContent
+    </p>
+    <p>
+        (8) 是否可用id代替HTML元素
+    </p>
+    <p>
+        IE：可以用id来代替HTML元素
+    </p>
+    <p>
+        FF：不可以
+    </p>
+    <p>
+        这里只列出了常见的，还有不少，更多的介绍可以参看
+        <a title="JavaScript在IE浏览器和Firefox浏览器中的差异总结" target="_self" rel="nofollow"
+        href="http://witmax.cn/javascript-difference-summary.html">
+            JavaScript在IE浏览器和Firefox浏览器中的差异总结
+        </a>
+    </p>
+    <p>
+        <strong>
+            5
+        </strong>
+        <strong>
+            ，规避javascript多人开发函数重名问题
+        </strong>
+    </p>
+    <p>
+        (1) 可以开发前规定命名规范，根据不同开发人员开发的功能在函数前加前缀
+    </p>
+    <p>
+        (2) 将每个开发人员的函数封装到类中，调用的时候就调用类的函数，即使函数重名只要类名不重复就ok
+    </p>
+    <p>
+        <strong>
+            6
+        </strong>
+        <strong>
+            ，javascript面向对象中继承实现
+        </strong>
+    </p>
+    <p>
+        javascript面向对象中的继承实现一般都使用到了构造函数和Prototype原型链，简单的代码如下：
+    </p>
+    <pre>
+        function Animal(name) {
+    </pre>
+    <pre>
+        this.name = name;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        Animal.prototype.getName = function() {alert(this.name)}
+    </pre>
+    <pre>
+        function Dog() {};
+    </pre>
+    <pre>
+        Dog.prototype = new Animal("Buddy");
+    </pre>
+    <pre>
+        Dog.prototype.constructor = Dog;
+    </pre>
+    <pre>
+        var dog = new Dog();
+    </pre>
+    <p>
+        <strong>
+            7
+        </strong>
+        <strong>
+            ，FF下面实现outerHTML
+        </strong>
+    </p>
+    <p>
+        FF不支持outerHTML，要实现outerHTML还需要特殊处理
+    </p>
+    <p>
+        思路如下：
+    </p>
+    <p>
+        在页面中添加一个新的元素A，克隆一份需要获取outerHTML的元素，将这个元素append到新的A中，然后获取A的innerHTML就可以了。
+    </p>
+    <pre>
+        &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+    </pre>
+    <pre>
+        &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+    </pre>
+    <pre>
+        &lt;head&gt;
+    </pre>
+    <pre>
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=gb2312"
+        /&gt;
+    </pre>
+    <pre>
+        &lt;title&gt;获取outerHMTL&lt;/title&gt;
+    </pre>
+    <pre>
+        &lt;style&gt;
+    </pre>
+    <pre>
+        div{ background:#0000FF;width:100px;height:100px;}
+    </pre>
+    <pre>
+        span{ background:#00FF00;width:100px;height:100px;}
+    </pre>
+    <pre>
+        p{ background:#FF0000;width:100px;height:100px;}
+    </pre>
+    <pre>
+        &lt;/style&gt;
+    </pre>
+    <pre>
+        &lt;/head&gt;
+    </pre>
+    <pre>
+        &lt;body&gt;
+    </pre>
+    <pre>
+        &lt;div id="a"&gt;&lt;span&gt;SPAN&lt;/span&gt;DIV&lt;/div&gt;
+    </pre>
+    <pre>
+        &lt;span&gt;SPAN&lt;/span&gt;
+    </pre>
+    <pre>
+        &lt;p&gt;P&lt;/p&gt;
+    </pre>
+    <pre>
+        &lt;script type="text/javascript"&gt;
+    </pre>
+    <pre>
+        function getOuterHTML(id){
+    </pre>
+    <pre>
+        var el = document.getElementById(id);
+    </pre>
+    <pre>
+        var newNode = document.createElement("div");
+    </pre>
+    <pre>
+        document.appendChild(newNode);
+    </pre>
+    <pre>
+        var clone = el.cloneNode(true);
+    </pre>
+    <pre>
+        newNode.appendChild(clone);
+    </pre>
+    <pre>
+        alert(newNode.innerHTML);
+    </pre>
+    <pre>
+        document.removeChild(newNode);
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        getOuterHTML("a");
+    </pre>
+    <pre>
+        &lt;/script&gt;
+    </pre>
+    <pre>
+        &lt;/body&gt;
+    </pre>
+    <pre>
+        &lt;/html&gt;
+    </pre>
+    <p>
+        <strong>
+            8
+        </strong>
+        <strong>
+            ，编写一个方法 求一个字符串的字节长度
+        </strong>
+    </p>
+    <p>
+        假设：
+    </p>
+    <p>
+        一个英文字符占用一个字节，一个中文字符占用两个字节
+    </p>
+    <pre>
+        function GetBytes(str){
+    </pre>
+    <pre>
+        var len = str.length;
+    </pre>
+    <pre>
+        var bytes = len;
+    </pre>
+    <pre>
+        for(var i=0; i&lt;len; i++){
+    </pre>
+    <pre>
+        if (str.charCodeAt(i) &gt; 255) bytes++;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        return bytes;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        alert(GetBytes("你好,as"));
+    </pre>
+    <p>
+        <strong>
+            9
+        </strong>
+        <strong>
+            ，编写一个方法 去掉一个数组的重复元素
+        </strong>
+    </p>
+    <pre>
+        var arr = [1 ,1 ,2, 3, 3, 2, 1];
+    </pre>
+    <pre>
+        Array.prototype.unique = function(){
+    </pre>
+    <pre>
+        var ret = [];
+    </pre>
+    <pre>
+        var o = {};
+    </pre>
+    <pre>
+        var len = this.length;
+    </pre>
+    <pre>
+        for (var i=0; i&lt;len; i++){
+    </pre>
+    <pre>
+        var v = this[i];
+    </pre>
+    <pre>
+        if (!o[v]){
+    </pre>
+    <pre>
+        o[v] = 1;
+    </pre>
+    <pre>
+        ret.push(v);
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        return ret;
+    </pre>
+    <pre>
+        };
+    </pre>
+    <pre>
+        alert(arr.unique());
+    </pre>
+    <p>
+        <strong>
+            10
+        </strong>
+        <strong>
+            ，写出3个使用this的典型应用
+        </strong>
+    </p>
+    <p>
+        （1）在html元素事件属性中使用，如
+    </p>
+    <pre>
+        &lt;input type=”button” onclick=”showInfo(this);” value=”点击一下”/&gt;
+    </pre>
+    <p>
+        （2）构造函数
+    </p>
+    <pre>
+        function Animal(name, color) {
+    </pre>
+    <pre>
+        this.name = name;
+    </pre>
+    <pre>
+        this.color = color;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <p>
+        （3）
+    </p>
+    <pre>
+        &lt;input type="button" id="text" value="点击一下" /&gt;
+    </pre>
+    <pre>
+        &lt;script type="text/javascript"&gt;
+    </pre>
+    <pre>
+        var btn = document.getElementById("text");
+    </pre>
+    <pre>
+        btn.onclick = function() {
+    </pre>
+    <pre>
+        alert(this.value); //此处的this是按钮元素
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        &lt;/script&gt;
+    </pre>
+    <p>
+        （4）CSS expression表达式中使用this关键字
+    </p>
+    <pre>
+        &lt;table width="100px" height="100px"&gt;
+    </pre>
+    <pre>
+        &lt;tr&gt;
+    </pre>
+    <pre>
+        &lt;td&gt;
+    </pre>
+    <pre>
+        &lt;div style="width:expression(this.parentNode.width);"&gt;div element&lt;/div&gt;
+    </pre>
+    <pre>
+        &lt;/td&gt;
+    </pre>
+    <pre>
+        &lt;/tr&gt;
+    </pre>
+    <pre>
+        &lt;/table&gt;
+    </pre>
+    <p>
+        <strong>
+            12
+        </strong>
+        <strong>
+            ，如何显示/隐藏一个DOM元素？
+        </strong>
+    </p>
+    <pre>
+        el.style.display = "";
+    </pre>
+    <pre>
+        el.style.display = "none";
+    </pre>
+    <p>
+        el是要操作的DOM元素
+    </p>
+    <p>
+        <strong>
+            13
+        </strong>
+        <strong>
+            ，JavaScript中如何检测一个变量是一个String类型？请写出函数实现
+        </strong>
+    </p>
+    <p>
+        <strong>
+            String
+        </strong>
+        <strong>
+            类型有两种生成方式：
+        </strong>
+    </p>
+    <p>
+        (1)Var str = “hello world”;
+    </p>
+    <p>
+        (2)Var str2 = new String(“hello world”);
+    </p>
+    <pre>
+        function IsString(str){
+    </pre>
+    <pre>
+        return (typeof str == "string" || str.constructor == String);
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        var str = "";
+    </pre>
+    <pre>
+        alert(IsString(1));
+    </pre>
+    <pre>
+        alert(IsString(str));
+    </pre>
+    <pre>
+        alert(IsString(new String(str)));
+    </pre>
+    <p>
+        <strong>
+            14
+        </strong>
+        <strong>
+            ，网页中实现一个计算当年还剩多少时间的倒数计时程序，要求网页上实时动态显示“××年还剩××天××时××分××秒”
+        </strong>
+    </p>
+    <pre>
+        &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+    </pre>
+    <pre>
+        &lt;html&gt;
+    </pre>
+    <pre>
+        &lt;head&gt;
+    </pre>
+    <pre>
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+    </pre>
+    <pre>
+        &lt;title&gt;倒计时&lt;/title&gt;
+    </pre>
+    <pre>
+        &lt;/head&gt;
+    </pre>
+    <pre>
+        &lt;body&gt;
+    </pre>
+    <pre>
+        &lt;input type="text" value="" id="input" size="1000"/&gt;
+    </pre>
+    <pre>
+        &lt;script type="text/javascript"&gt;
+    </pre>
+    <pre>
+        function counter() {
+    </pre>
+    <pre>
+        var date = new Date();
+    </pre>
+    <pre>
+        var year = date.getFullYear();
+    </pre>
+    <pre>
+        var date2 = new Date(year, 12, 31, 23, 59, 59);
+    </pre>
+    <pre>
+        var time = (date2 - date)/1000;
+    </pre>
+    <pre>
+        var day =Math.floor(time/(24*60*60))
+    </pre>
+    <pre>
+        var hour = Math.floor(time%(24*60*60)/(60*60))
+    </pre>
+    <pre>
+        var minute = Math.floor(time%(24*60*60)%(60*60)/60);
+    </pre>
+    <pre>
+        var second = Math.floor(time%(24*60*60)%(60*60)%60);
+    </pre>
+    <pre>
+        var str = year + "年还剩"+day+"天"+hour+"时"+minute+"分"+second+"秒";
+    </pre>
+    <pre>
+        document.getElementById("input").value = str;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        window.setInterval("counter()", 1000);
+    </pre>
+    <pre>
+        &lt;/script&gt;
+    </pre>
+    <pre>
+        &lt;/body&gt;
+    </pre>
+    <pre>
+        &lt;/html&gt;
+    </pre>
+    <p>
+        <strong>
+            15
+        </strong>
+        <strong>
+            ，补充代码，鼠标单击 Button1后将Button1移动到Button2的后面&lt;div&gt; &lt;input type=”button”
+            id =”button1″ value=”1″ onclick=”???”&gt; &lt;input type=”button” id =”button2″
+            value=”2″ /”&gt; &lt;/div&gt;
+        </strong>
+    </p>
+    <pre>
+        &lt;div&gt;
+    </pre>
+    <pre>
+        &lt;input type="button" id ="button1" value="1" onclick="moveBtn(this);"&gt;
+    </pre>
+    <pre>
+        &lt;input type="button" id ="button2" value="2" /&gt;
+    </pre>
+    <pre>
+        &lt;/div&gt;
+    </pre>
+    <pre>
+        &lt;script type="text/javascript"&gt;
+    </pre>
+    <pre>
+        function moveBtn(obj) {
+    </pre>
+    <pre>
+        var clone = obj.cloneNode(true);
+    </pre>
+    <pre>
+        var parent = obj.parentNode;
+    </pre>
+    <pre>
+        parent.appendChild(clone);
+    </pre>
+    <pre>
+        parent.removeChild(obj);
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        &lt;/script&gt;
+    </pre>
+    <p>
+        <strong>
+            16
+        </strong>
+        <strong>
+            ，JavaScript有哪几种数据类型
+        </strong>
+    </p>
+    <p>
+        简单：Number，Boolean，String，Null，Undefined
+    </p>
+    <p>
+        复合：Object，Array，Function
+    </p>
+    <p>
+        <strong>
+            17
+        </strong>
+        <strong>
+            ，下面css标签在JavaScript中调用应如何拼写，border-left-color，-moz-viewport
+        </strong>
+    </p>
+    <p>
+        borderLeftColor
+    </p>
+    <p>
+        mozViewport
+    </p>
+    <p>
+        <strong>
+            18
+        </strong>
+        <strong>
+            ，JavaScript中如何对一个对象进行深度clone
+        </strong>
+    </p>
+    <pre>
+        function cloneObject(o) {
+    </pre>
+    <pre>
+        if(!o || 'object' !== typeof o) {
+    </pre>
+    <pre>
+        return o;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        var c = 'function' === typeof o.pop ? [] : {};
+    </pre>
+    <pre>
+        var p, v;
+    </pre>
+    <pre>
+        for(p in o) {
+    </pre>
+    <pre>
+        if(o.hasOwnProperty(p)) {
+    </pre>
+    <pre>
+        v = o[p];
+    </pre>
+    <pre>
+        if(v &amp;&amp; 'object' === typeof v) {
+    </pre>
+    <pre>
+        c[p] = Ext.ux.clone(v);
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        else {
+    </pre>
+    <pre>
+        c[p] = v;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        return c;
+    </pre>
+    <pre>
+        };
+    </pre>
+    <p>
+        <strong>
+            19
+        </strong>
+        <strong>
+            ，如何控制alert中的换行
+        </strong>
+    </p>
+    <p>
+        \n alert(“p\np”);
+    </p>
+    <p>
+        <strong>
+            20
+        </strong>
+        <strong>
+            ，请实现，鼠标点击页面中的任意标签，alert该标签的名称．（注意兼容性）
+        </strong>
+    </p>
+    <pre>
+        &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+    </pre>
+    <pre>
+        &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+    </pre>
+    <pre>
+        &lt;head&gt;
+    </pre>
+    <pre>
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=gb2312"
+        /&gt;
+    </pre>
+    <pre>
+        &lt;title&gt;鼠标点击页面中的任意标签，alert该标签的名称&lt;/title&gt;
+    </pre>
+    <pre>
+        &lt;style&gt;
+    </pre>
+    <pre>
+        div{ background:#0000FF;width:100px;height:100px;}
+    </pre>
+    <pre>
+        span{ background:#00FF00;width:100px;height:100px;}
+    </pre>
+    <pre>
+        p{ background:#FF0000;width:100px;height:100px;}
+    </pre>
+    <pre>
+        &lt;/style&gt;
+    </pre>
+    <pre>
+        &lt;script type="text/javascript"&gt;
+    </pre>
+    <pre>
+        document.onclick = function(evt){
+    </pre>
+    <pre>
+        var e = window.event || evt;
+    </pre>
+    <pre>
+        var tag = e["target"] || e["srcElement"];
+    </pre>
+    <pre>
+        alert(tag.tagName);
+    </pre>
+    <pre>
+        };
+    </pre>
+    <pre>
+        &lt;/script&gt;
+    </pre>
+    <pre>
+        &lt;/head&gt;
+    </pre>
+    <pre>
+        &lt;body&gt;
+    </pre>
+    <pre>
+        &lt;div id="div"&gt;&lt;span&gt;SPAN&lt;/span&gt;DIV&lt;/div&gt;
+    </pre>
+    <pre>
+        &lt;span&gt;SPAN&lt;/span&gt;
+    </pre>
+    <pre>
+        &lt;p&gt;P&lt;/p&gt;
+    </pre>
+    <pre>
+        &lt;/body&gt;
+    </pre>
+    <pre>
+        &lt;/html&gt;
+    </pre>
+    <p>
+        <strong>
+            21
+        </strong>
+        <strong>
+            ，请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象，如：
+        </strong>
+    </p>
+    <p>
+        <strong>
+            var url = “http://witmax.cn/index.php?key0=0&amp;key1=1&amp;key2=2″;
+        </strong>
+    </p>
+    <pre>
+        function parseQueryString(url){
+    </pre>
+    <pre>
+        var params = {};
+    </pre>
+    <pre>
+        var arr = url.split("?");
+    </pre>
+    <pre>
+        if (arr.length &lt;= 1)
+    </pre>
+    <pre>
+        return params;
+    </pre>
+    <pre>
+        arr = arr[1].split("&amp;");
+    </pre>
+    <pre>
+        for(var i=0, l=arr.length; i&lt;l; i++){
+    </pre>
+    <pre>
+        var a = arr[i].split("=");
+    </pre>
+    <pre>
+        params[a[0]] = a[1];
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        return params;
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        var url = "http://witmax.cn/index.php?key0=0&amp;key1=1&amp;key2=2";
+    </pre>
+    <pre>
+        var ps = parseQueryString(url);
+    </pre>
+    <pre>
+        alert(ps["key1"]);
+    </pre>
+    <p>
+        <strong>
+            22
+        </strong>
+        <strong>
+            ，ajax是什么? ajax的交互模型? 同步和异步的区别? 如何解决跨域问题?
+        </strong>
+    </p>
+    <p>
+        Ajax是多种技术组合起来的一种浏览器和服务器交互技术，基本思想是允许一个互联网浏览器向一个远程页面/服务做异步的http调用，并且用收到的数据来更新一个当前web页面而不必刷新整个页面。该技术能够改进客户端的体验。包含的技术：
+    </p>
+    <p>
+        XHTML：对应W3C的XHTML规范，目前是XHTML1.0。
+    </p>
+    <p>
+        CSS：对应W3C的CSS规范，目前是CSS2.0
+    </p>
+    <p>
+        DOM：这里的DOM主要是指HTML DOM，XML DOM包括在下面的XML中
+    </p>
+    <p>
+        JavaScript：对应于ECMA的ECMAScript规范
+    </p>
+    <p>
+        XML：对应W3C的XML DOM、XSLT、XPath等等规范
+    </p>
+    <p>
+        XMLHttpRequest：对应WhatWG的Web Applications1.0规范（
+        <a target="_self" rel="nofollow" href="http://whatwg.org/specs/web-apps/current-work/">
+            http://whatwg.org/specs/web-apps/current-work/
+        </a>
+        ）
+    </p>
+    <p>
+        AJAX交互模型
+    </p>
+    <p>
+        &nbsp;
+    </p>
+    <p>
+        同步：脚本会停留并等待服务器发送回复然后再继续
+    </p>
+    <p>
+        异步：脚本允许页面继续其
+        <a target="_self" rel="nofollow" href="http://whatis.ctocio.com.cn/searchwhatis/292/7333792.shtml">
+            进程
+        </a>
+        并处理可能的回复
+    </p>
+    <p>
+        跨域问题简单的理解就是因为JS同源策略的限制，a.com域名下的JS无法操作b.com或c.a.com下的对象，具体场景如下：
+    </p>
+    <p>
+        &nbsp;
+    </p>
+    <p>
+        PS：（1）如果是端口或者协议造成的跨域问题前端是无能为力的
+    </p>
+    <p>
+        (2) 在跨域问题上，域仅仅通过URL的首部来识别而不会尝试判断相同的IP地址对应的域或者两个域是否对应一个IP
+    </p>
+    <p>
+        前端对于跨域的解决办法：
+    </p>
+    <p>
+        (1) document.domain+iframe
+    </p>
+    <p>
+        (2) 动态创建script标签
+    </p>
+    <p>
+        <strong>
+            23
+        </strong>
+        <strong>
+            ，什么是闭包？下面这个ul，如何点击每一列的时候alert其index?
+        </strong>
+    </p>
+    <pre>
+        &lt;ul id=”test”&gt;
+    </pre>
+    <pre>
+        &lt;li&gt;这是第一条&lt;/li&gt;
+    </pre>
+    <pre>
+        &lt;li&gt;这是第二条&lt;/li&gt;
+    </pre>
+    <pre>
+        &lt;li&gt;这是第三条&lt;/li&gt;
+    </pre>
+    <pre>
+        &lt;/ul&gt;
+    </pre>
+    <p>
+        内部函数被定义它的函数的外部区域调用的时候就产生了闭包。
+    </p>
+    <pre>
+        (function A() {
+    </pre>
+    <pre>
+        var index = 0;
+    </pre>
+    <pre>
+        var ul = document.getElementById("test");
+    </pre>
+    <pre>
+        var obj = {};
+    </pre>
+    <pre>
+        for (var i = 0, l = ul.childNodes.length; i &lt; l; i++) {
+    </pre>
+    <pre>
+        if (ul.childNodes[i].nodeName.toLowerCase() == "li") {
+    </pre>
+    <pre>
+        var li = ul.childNodes[i];
+    </pre>
+    <pre>
+        li.onclick = function() {
+    </pre>
+    <pre>
+        index++;
+    </pre>
+    <pre>
+        alert(index);
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        })();
+    </pre>
+    <p>
+        <strong>
+            24
+        </strong>
+        <strong>
+            ，请给出异步加载js方案，不少于两种
+        </strong>
+    </p>
+    <p>
+        默认情况javascript是同步加载的，也就是javascript的加载时阻塞的，后面的元素要等待javascript加载完毕后才能进行再加载，对于一些意义不是很大的javascript，如果放在页头会导致加载很慢的话，是会严重影响用户体验的。
+    </p>
+    <p>
+        异步加载方式：
+    </p>
+    <p>
+        (1) defer，只支持IE
+    </p>
+    <p>
+        (2) async：
+    </p>
+    <p>
+        (3) 创建script，插入到DOM中，加载完毕后callBack，见代码：
+    </p>
+    <pre>
+        function loadScript(url, callback){
+    </pre>
+    <pre>
+        var script = document.createElement("script")
+    </pre>
+    <pre>
+        script.type = "text/javascript";
+    </pre>
+    <pre>
+        if (script.readyState){ //IE
+    </pre>
+    <pre>
+        script.onreadystatechange = function(){
+    </pre>
+    <pre>
+        if (script.readyState == "loaded" ||
+    </pre>
+    <pre>
+        script.readyState == "complete"){
+    </pre>
+    <pre>
+        script.onreadystatechange = null;
+    </pre>
+    <pre>
+        callback();
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        };
+    </pre>
+    <pre>
+        } else { //Others: Firefox, Safari, Chrome, and Opera
+    </pre>
+    <pre>
+        script.onload = function(){
+    </pre>
+    <pre>
+        callback();
+    </pre>
+    <pre>
+        };
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        script.src = url;
+    </pre>
+    <pre>
+        document.body.appendChild(script);
+    </pre>
+    <pre>
+        }
+    </pre>
+    <p>
+        <strong>
+            25
+        </strong>
+        <strong>
+            ，请设计一套方案，用于确保页面中JS加载完全。
+        </strong>
+    </p>
+    <pre>
+        var n = document.createElement("script");
+    </pre>
+    <pre>
+        n.type = "text/javascript";
+    </pre>
+    <pre>
+        //以上省略部分代码
+    </pre>
+    <pre>
+        //ie支持script的readystatechange属性(IE support the readystatechange event
+        for script and css nodes)
+    </pre>
+    <pre>
+        if(ua.ie){
+    </pre>
+    <pre>
+        n.onreadystatechange = function(){
+    </pre>
+    <pre>
+        var rs = this.readyState;
+    </pre>
+    <pre>
+        if('loaded' === rs || 'complete'===rs){
+    </pre>
+    <pre>
+        n.onreadystatechange = null;
+    </pre>
+    <pre>
+        f(id,url); //回调函数
+    </pre>
+    <pre>
+        }
+    </pre>
+    <pre>
+        };
+    </pre>
+    <pre>
+        //省略部分代码
+    </pre>
+    <pre>
+        //safari 3.x supports the load event for script nodes(DOM2)
+    </pre>
+    <pre>
+        n.addEventListener('load',function(){
+    </pre>
+    <pre>
+        f(id,url);
+    </pre>
+    <pre>
+        });
+    </pre>
+    <pre>
+        //firefox and opera support onload(but not dom2 in ff) handlers for
+    </pre>
+    <pre>
+        //script nodes. opera, but no ff, support the onload event for link
+    </pre>
+    <pre>
+        //nodes.
+    </pre>
+    <pre>
+        }else{
+    </pre>
+    <pre>
+        n.onload = function(){
+    </pre>
+    <pre>
+        f(id,url);
+    </pre>
+    <pre>
+        };
+    </pre>
+    <pre>
+        }
+    </pre>
+    <p>
+        <strong>
+            26
+        </strong>
+        <strong>
+            ，js中如何定义class,如何扩展prototype?
+        </strong>
+    </p>
+    <p>
+        Ele.className = “***”; //***在css中定义，形式如下：.*** {…}
+    </p>
+    <p>
+        A.prototype.B = C;
+    </p>
+    <p>
+        A是某个构造函数的名字
+    </p>
+    <p>
+        B是这个构造函数的属性
+    </p>
+    <p>
+        C是想要定义的属性的值
+    </p>
+    <p>
+        <strong>
+            27
+        </strong>
+        <strong>
+            ，如何添加html元素的事件,有几种方法.
+        </strong>
+    </p>
+    <p>
+        （1） 为HTML元素的事件属性赋值
+    </p>
+    <p>
+        （2） 在JS中使用ele.on*** = function() {…}
+    </p>
+    <p>
+        （3） 使用DOM2的添加事件的方法 addEventListener或attachEvent
+    </p>
+    <p>
+        <strong>
+            28
+        </strong>
+        <strong>
+            ，documen.write和 innerHTML的区别
+        </strong>
+    </p>
+    <p>
+        document.write只能重绘整个页面
+    </p>
+    <p>
+        innerHTML可以重绘页面的一部分
+    </p>
+    <p>
+        <strong>
+            29
+        </strong>
+        <strong>
+            ，多浏览器检测通过什么？
+        </strong>
+    </p>
+    <p>
+        （1） navigator.userAgent
+    </p>
+    <p>
+        （2） 不同浏览器的特性，如addEventListener
+    </p>
+    <p>
+        <strong>
+            30
+        </strong>
+        <strong>
+            ，js的基础对象有那些, window和document的常用的方法和属性列出来
+        </strong>
+    </p>
+    <p>
+        String,Number,Boolean
+    </p>
+    <p>
+        Window:
+    </p>
+    <p>
+        方法：setInterval,setTimeout,clearInterval,clearTimeout,alert,confirm,open
+    </p>
+    <p>
+        属性：name,parent,screenLeft,screenTop,self,top,status
+    </p>
+    <p>
+        Document
+    </p>
+    <p>
+        方法：createElement,execCommand,getElementById,getElementsByName,getElementByTagName,write,writeln
+    </p>
+    <p>
+        属性：cookie,doctype,domain,documentElement,readyState,URL,
+    </p>
+    <p>
+        <strong>
+            31
+        </strong>
+        <strong>
+            ，前端开发的优化问题
+        </strong>
+    </p>
+    <p>
+        （1） 减少http请求次数：css spirit,data uri
+    </p>
+    <p>
+        （2） JS，CSS源码压缩
+    </p>
+    <p>
+        （3） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
+    </p>
+    <p>
+        （4） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能
+    </p>
+    <p>
+        （5） 用setTimeout来避免页面失去响应
+    </p>
+    <p>
+        （6） 用hash-table来优化查找
+    </p>
+    <p>
+        （7） 当需要设置的样式很多时设置className而不是直接操作style
+    </p>
+    <p>
+        （8） 少用全局变量
+    </p>
+    <p>
+        （9） 缓存DOM节点查找的结果
+    </p>
+    <p>
+        （10） 避免使用CSS Expression
+    </p>
+    <p>
+        （11） 图片预载
+    </p>
+    <p>
+        （12） 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢
+    </p>
+    <p>
+        <strong>
+            32
+        </strong>
+        <strong>
+            ，如何控制网页在网络传输过程中的数据量
+        </strong>
+    </p>
+    <p>
+        启用GZIP压缩
+    </p>
+    <p>
+        保持良好的编程习惯，避免重复的CSS，JavaScript代码，多余的HTML标签和属性
+    </p>
+    <p>
+        <strong>
+            33
+        </strong>
+        <strong>
+            ，Flash、Ajax各自的优缺点，在使用中如何取舍？
+        </strong>
+    </p>
+    <p>
+        Ajax的优势
+    </p>
+    <p>
+        （1） 可搜索型
+    </p>
+    <p>
+        （2） 开放性
+    </p>
+    <p>
+        （3） 费用
+    </p>
+    <p>
+        （4） 易用性
+    </p>
+    <p>
+        （5） 易于开发
+    </p>
+    <p>
+        Flash的优势
+    </p>
+    <p>
+        （1） 多媒体处理
+    </p>
+    <p>
+        （2） 兼容性
+    </p>
+    <p>
+        （3） 矢量图形 比SVG，Canvas优势大很多
+    </p>
+    <p>
+        （4） 客户端资源调度，比如麦克风，摄像头
+    </p>
+</div>
+</body>
+</html>

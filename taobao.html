@@ -1,0 +1,615 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>taobao</title>
+</head>
+<body>
+    <font color="#ff0000">
+        一.网页制作方向的题目
+    </font>
+    <br>
+    1.什么是网站重构？div+css的布局较table布局有什么优点？
+    <br>
+    答：把"未采用CSS，大量使用HTML进行定位、布局，或者虽然已经采用CSS，但是未遵 循HTML结构化标准的站点"变成"让标记回归标记的原本意义。通过在HTML文档中使用结构化的标记以及用CSS控制页面表现，使页面的实际内容与它们
+    呈现的格式相分离的站点。"的过程就是网站重构
+    <p style="TEXT-INDENT: 2em;">
+        网站为什么要进行重构（网站重构的好处）
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        a、使页面加载得更快速；
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        b、降低带宽带来的费用：节约成本；
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        c、让你在修改设计时更有效率而代价更低；
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        d、帮助你的整个站点保持视觉的一致性；
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        e、更利于搜索引擎的检索（符合SEO的规范）；
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        f、令站点更容易被各种浏览器和用户
+    </p>
+    <font color="#ff0000">
+        2.如何理解css盒模型？
+        <br>
+        <font color="#000000">
+            &nbsp;
+        </font>
+    </font>
+    每个HTML元素都是长方形盒子 外边局(margin)、内边距(padding)、边框(border);
+    <br>
+    <br>
+    <font color="#ff0000">
+        3.平时做网页经常使用哪些hack?
+    </font>
+    <br>
+    Ie6 * _;&nbsp;ie7 *, *+,!important;&nbsp;ff !important.
+    <br>
+    <br>
+    <font color="#ff0000">
+        4.如何理解表现与内容相分离？
+    </font>
+    <br>
+    表现与结构相分离简单的说就是HTML中只有标签元素&nbsp;表现完全是由CSS文件控制的
+    <br>
+    <br>
+    <font color="#ff0000">
+        5.如何解决ie6的双边距问题？
+    </font>
+    <br>
+    解决ie6双边距问题块级元素就加display：inline；行内元素转块级元素display：inline后面再加display：table
+    <br>
+    <font color="#ff0000">
+        <br>
+        6.如何定义高度为1px的容器？
+    </font>
+    <br>
+    {heigh：1px; width:10px; background:#000; overflow:hidden}ie6下这个问题是默认行高造成的，overflow:hidden&nbsp;|&nbsp;zoom:0.08&nbsp;|&nbsp;line-
+    height:1px这样也可以解决
+    <br>
+    <br>
+    <font color="#ff0000">
+        7.如何实现一个层在 浏览器中垂直左右居中？
+    </font>
+    <br>
+    margin：auto
+    <br>
+    <br>
+    <font color="#ff0000">
+        8.如何解决ie6的3像素问题？
+    </font>
+    <br>
+    _zoom:1; &nbsp;margin-left: value; _margin-left: value-3px;
+    <br>
+    <br>
+    <font color="#ff0000">
+        9.为什么FF下文本无法撑开容器的高度?如何解决？
+    </font>
+    <br>
+    清除浮动 .clear{ clear:both; height:0px; overflow:hidden;}
+    <br>
+    <br>
+    <font color="#ff0000">
+        10.怎么样才能让层显示在FLASH之上呢?
+    </font>
+    &nbsp;
+    <br>
+    解决的办法是给FLASH设置透明属性
+    <br>
+    &lt;param name="wmode" value="transparent" /&gt;或者&lt;param name="wmode"
+    value="opaque" /&gt;
+    <br>
+    <br>
+    <font color="#ff0000">
+        11、margin-left:10px在FF和IE6下显示问题。IE6显示 20px,FF显示10px。
+    </font>
+    <br>
+    &nbsp;&nbsp; 用!important就可以解决了。margin-left:10px !important;margin-left:5px;
+    <br>
+    <p>
+        <font color="#ff0000">
+            12、cursor:hand在FF不显示小手，如何解决？
+        </font>
+        <br>
+        &nbsp; 一句话：cursor;pointer;
+    </p>
+    <font color="#ff0000">
+        13、要求在FF显示height为20px;IE6下显示height为25px;IE7下显示height为30px.
+    </font>
+    &nbsp;&nbsp;
+    <br>
+    #test{height:20px;}
+    <br>
+    *html #test{height:25px;}
+    <br>
+    *+html #test{height:30px;}
+    <br>
+    <br>
+    <font color="#ff0000">
+        14."Haker"&nbsp;解决CSS兼容性
+    </font>
+    <br>
+    height:300px;&nbsp;
+    <div id="sina_keyword_ad_area2">
+        <wbr>
+        <br>
+        height:300px \9;&nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        // " \9 " 只有&nbsp;
+        <wbr>
+        IE6、IE7、IE8&nbsp;
+        <wbr>
+        才可识别
+        <br>
+        &nbsp;
+        <wbr>
+        *height:300px;&nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        // " * " 只有&nbsp;
+        <wbr>
+        IE6、IE7&nbsp;
+        <wbr>
+        才可识别
+        <br>
+        &nbsp;
+        <wbr>
+        _height:300px;&nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        // " _ " 只有&nbsp;
+        <wbr>
+        IE6&nbsp;
+        <wbr>
+        才可识别
+        <br>
+        &nbsp;
+        <wbr>
+        *+height:300px;&nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        &nbsp;
+        <wbr>
+        // " * " 只有&nbsp;
+        <wbr>
+        IE7&nbsp;
+        <wbr>
+        才可识别
+    </div>
+    <br>
+    <br>
+    <font color="#ff0000">
+        15、在IE中内容会自适应高度，而FF不会自适应高度。
+    </font>
+    <br>
+    在要自适应高度的层中加一个层，样式为
+    <br>
+    .clear{clear:both;font-size:0px;height:1px}，
+    <br>
+    这样解决有一个小小的问题，高度会多一个像素。还有一种解决方法，给当前层加上一个伪类
+    <br>
+    #test:after {content: "."; display: block;&nbsp;&nbsp; height: 0; clear:
+    both; visibility: hidden;}
+    <br>
+    <br>
+    <font color="#ff0000">
+        16.超链接访问过后hover样式就不出现的问题?
+    </font>
+    <br>
+    被点击访问过的超链接样式不在具有hover和active了,解决方法是改变CSS属性的排列顺序: L-V-H-A
+    <br>
+    <font color="#ff0000">
+        <br>
+        17.IE6的双倍边距BUG
+    </font>
+    <br>
+    <p style="TEXT-INDENT: 2em;">
+        例如:
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        &lt;style type="text/css"&gt;
+        <br>
+        &nbsp;&nbsp;&nbsp; body {margin:0}
+        <br>
+        &nbsp;&nbsp;&nbsp; div { float:left; margin-left:10px; width:200px; height:200px;
+        border:1px solid red }
+        <br>
+        &lt;/style&gt;
+    </p>
+    浮动后本来外边距10px,但IE解释为20px,解决办法是加上display:inline
+    <br>
+    <br>
+    <font color="#ff0000">
+        18.为什么无法定义1px左右高度的容器?
+    </font>
+    <br>
+    IE6下这个问题是因为默认的行高造成的，解决的方法也有很多，例如：overflow:hidden | zoom:0.08 | line-height:1px
+    <br>
+    <br>
+    <br>
+    <font color="#ff0000">
+        19、firefox嵌套div标签的居中问题的解决方法
+    </font>
+    <br>
+    <p style="TEXT-INDENT: 2em;">
+        假定有如下情况：
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        &lt;div id="a"&gt;
+        <br>
+        &nbsp;&nbsp;&nbsp; &lt;div id="b"&gt; &lt;/div&gt;
+        <br>
+        &lt;/div&gt;
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        如果要实现b在a中居中放置，一般只需用CSS设置a的text-align属性为center。这样的方法在IE里看起来一切正常；但是在Firefox中b却会是居左的。
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        解决办法就是设置b的横向margin为auto。例如设置b的CSS样式为：margin: 0 auto;。
+    </p>
+    <br>
+    <br>
+    <br>
+    <font color="#ff0000">
+        20.IE5 和IE6的BOX解释不一致&nbsp;
+    </font>
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <wbr>
+                    <br>
+                    IE5下div{width:300px;margin:0 10px 0 10px;}&nbsp;
+                    <wbr>
+                    <br>
+                    div 的宽度会被解释为300px-10px(右填充)-10px(左填充)最终div的宽度为280px，而在IE6和其他浏览器上宽度则是以
+                    300px+10px(右填充)+10px(左填充)=320px来计算的。这时我们可以做如下修改div{width:300px!imp
+                    <wbr>
+                    ortant;width :340px;margin:0 10px 0 10px}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <font color="#ff0000">
+        21.Doctype? 严格模式与混杂模式-如何触发这两种模式，区分它们有何意义?
+    </font>
+    <br>
+    <pre>
+        加入xml头部声明可以触发IE浏览器的Quirks mode，触发之后，浏览器解析方
+    </pre>
+    <br>
+    22.行内元素有哪些？块级元素有哪些？CSS的盒模型？
+    <br>
+    块级元素:
+    <br>
+    &lt;address&gt;
+    <br>
+    &lt;blockquote&gt; &nbsp;&nbsp;&nbsp;
+    <br>
+    &lt;button&gt;
+    <br>
+    &lt;caption&gt;
+    <br>
+    &lt;dd&gt;
+    <br>
+    &lt;del&gt;
+    <br>
+    &lt;dl&gt;
+    <br>
+    &lt;dt&gt;
+    <br>
+    &lt;fieldset&gt;
+    <br>
+    &lt;form&gt;
+    <br>
+    &lt;h1&gt;...&lt;h6&gt;
+    <br>
+    &lt;hr&gt;
+    <br>
+    &lt;iframe&gt;
+    <br>
+    &lt;ins&gt;
+    <br>
+    &lt;map&gt;
+    <br>
+    &lt;object&gt;
+    <br>
+    &lt;ol&gt;
+    <br>
+    &lt;ul&gt;
+    <br>
+    &lt;li&gt;
+    <br>
+    &lt;p&gt;
+    <br>
+    &lt;table&gt;
+    <br>
+    &lt;tfoot&gt;
+    <br>
+    &lt;th&gt;
+    <br>
+    &lt;thead&gt;
+    <br>
+    &lt;tr&gt;
+    <br>
+    行类:
+    <br>
+    &lt;a&gt;
+    <br>
+    &lt;abbr&gt;
+    <br>
+    &lt;b&gt;
+    <br>
+    &lt;big&gt;
+    <br>
+    &lt;br&gt;
+    <br>
+    &lt;button&gt;
+    <br>
+    &lt;em&gt;
+    <br>
+    &lt;i&gt;
+    <br>
+    &lt;em&gt;
+    <br>
+    &lt;input&gt;
+    <br>
+    &lt;img&gt;
+    <br>
+    &lt;span&gt;
+    <br>
+    &lt;sub&gt;
+    <br>
+    &lt;sup&gt;
+    <br>
+    &lt;tt&gt;
+    <br>
+    &lt;strong&gt;
+    <br>
+    &lt;select&gt;
+    <br>
+    &lt;small&gt;
+    <br>
+    &lt;label&gt;
+    <br>
+    &lt;var&gt;
+    <br>
+    <br>
+    盒模型主要定义四个区域：内容(content)、边框距(padding)、边界(border)和边距(margin)。
+    <br>
+    <br>
+    <font color="#ff0000">
+        22.CSS引入的方式有哪些? link和@import的区别是?
+    </font>
+    <br>
+    差别1：老祖宗的差别。link属于XHTML标签，而@import完全是CSS提供的一种方式。
+    <br>
+    <p style="TEXT-INDENT: 2em;">
+        差别2：加载顺序的差别。当一个页面被加载的时候（就是被浏览者浏览的时候），link引用的CSS会同时被加载，而@imp
+        <wbr>
+        ort引用的CSS会等到页面全部被下载完再被加载。所以有时候浏览@imp
+        <wbr>
+        ort加载CSS的页面时开始会没有样式（就是闪烁），网速慢的时候还挺明显（梦之都加载CSS的方式就是使用@imp
+        <wbr>
+        ort，我一边下载一边浏览梦之都网页时，就会出现上述问题）。
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        差别3：兼容性的差别。由于
+        <a rel="nofollow" href="http://www.w3.org/TR/CSS21/cascade.html#at-imp%3Cwbr%3Eort">
+            @imp
+            <wbr>
+            ort是CSS2.1
+        </a>
+        提出的所以老的浏览器不支持，@imp
+        <wbr>
+        ort只有在IE5以上的才能识别，而link标签无此问题。
+    </p>
+    <p style="text-indent: 2em;">
+        差别4：使用dom控制样式时的差别。当使用javas
+        <wbr>
+        cript控制dom去改变样式的时候，只能使用link标签，因为@imp
+        <wbr>
+        ort不是dom可以控制的。
+    </p>
+    <p style="TEXT-INDENT: 2em;">
+        差别5：@imp
+    </p>
+    <p>
+        <wbr>
+        ort可以在css中再次引入其他样式表，比如可以创建一个主样式表，在主样式表中再引入其他的样式表，
+    </p>
+    <font color="#ff0000">
+        23:前端页面有哪三层构成，分别是什么？作用是什么？
+    </font>
+    <p>
+        最准确的网页设计思路是把网页分成三个层次，即：结构层、表示层、行为层。
+    </p>
+    <p>
+        <strong>
+            网页的结构层（structural layer）
+        </strong>
+        由 HTML 或 XHTML 之类的标记语言负责创建。标签，也就是那些出现在尖括号里的单词，对网页内容的语义含义做出了描述，但这些标签不包含任何关于如何显示有关内容的信息。例如，P
+        标签表达了这样一种语义：“这是一个文本段。”
+    </p>
+    <p>
+        <strong>
+            网页的表示层（presentation layer）
+        </strong>
+        由 CSS 负责创建。 CSS 对“如何显示有关内容”的问题做出了回答。
+    </p>
+    <p>
+        <strong>
+            网页的行为层（beha
+            <wbr>
+            vior layer）
+        </strong>
+        负责回答“内容应该如何对事件做出反应”这一问题。这是 Javas
+        <wbr>
+        cript 语言和 DOM 主宰的领域。
+    </p>
+    <br>
+    <br>
+    <font color="#ff0000">
+        24：你做的页面在哪些流览器测试过？这些浏览器的内核分别是什么?经常遇到的浏览器的兼容性有哪些？怎么会出现？解决方法是什么？
+    </font>
+    <p>
+        点评：css的兼容性也是大家关注的热点。大家一定要注意多测试。Javas
+        <wbr>
+        cript 多浏览器兼容性问题及解决方案
+    </p>
+    <p>
+        兼容性处理要点
+        <br>
+        1、DOCTYPE 影响 CSS 处理
+    </p>
+    <p>
+        2、FF: 设置 padding 后， div 会增加 height 和 width， 但 IE 不会， 故需要用 !imp
+        <wbr>
+        ortant 多设一个 height 和 width
+    </p>
+    <p>
+        3、FF: 支持 !imp
+        <wbr>
+        ortant， IE 则忽略， 可用 !imp
+        <wbr>
+        ortant 为 FF 特别设置样式
+    </p>
+    <p>
+        4、div 的垂直居中问题: vertical-align:middle; 将行距增加到和整个DIV一样高 line-height:200px;
+        然后插入文字，就垂直居中了。缺点是要控制内容不要换行
+    </p>
+    <p>
+        5、在mozilla firefox和IE中的BOX模型解释不一致导致相差2px解决方法：
+    </p>
+    1、ul和ol列表缩进问题
+    <p>
+        消除ul、ol等列表的缩进时，样式应写成：list-style:none;margin:0px;padding:0px;
+        <br>
+        其中margin属性对IE有效，padding属性对FireFox有效。
+    </p>
+    2、CSS透明问题
+    <br>
+    3、CSS圆角问题
+    <br>
+    4、cursor:hand VS cursor:pointer
+    <br>
+    5、字体大小定义不同
+    <br>
+    6、CSS双线凹凸边框
+    <br>
+    IE：border:2px outset;。
+    <br>
+    FF： -moz-border-top-colors: #d4d0c8 white;-moz-border-left-colors: #d4d0c8
+    white;-moz-border-right-colors:#404040 #808080;-moz-border-bottom-colors:#404040
+    #808080;
+    <br>
+    <p>
+        浏览器bug
+        <br>
+        1、IE的双边距bug
+    </p>
+    <p>
+        设置为float的div在ie下设置的margin会加倍。这是一个ie6都存在的bug。
+    </p>
+    <p>
+        解决方案：在这个div里面加上display:inline;
+        <br>
+    </p>
+    <p>
+        IE与Firefox的CSS兼容大全
+        <br>
+        1.DOCTYPE 影响 CSS 处理&nbsp;
+    </p>
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <wbr>
+                    <br>
+                    2.FF: div 设置 margin-left, margin-right 为 auto 时已经居中, IE 不行&nbsp;
+                    <wbr>
+                    <br>
+                    3.FF: body 设置 text-align 时, div 需要设置 margin: auto(主要是 margin-left,margin-right)
+                    方可居中&nbsp;
+                    <wbr>
+                    <br>
+                    4.FF: 设置 padding 后, div 会增加 height 和 width, 但 IE 不会, 故需要用 !imp
+                    <wbr>
+                    ortant 多设一个 height 和 width
+                    <br>
+                    5.FF: 支持 !imp
+                    <wbr>
+                    ortant, IE 则忽略, 可用 !imp
+                    <wbr>
+                    ortant 为 FF 特别设置样式，值得注意的是，一定要将xxxx !imp
+                    <wbr>
+                    ortant 这句放置在另一句之上&nbsp;
+                    <wbr>
+                    <br>
+                    6.div 的垂直居中问题: vertical-align:middle;&nbsp;
+                    <wbr>
+                    将行距增加到和整个DIV一样高 line-height:200px; 然后插入文字，就垂直居中了。缺点是要控制内容不要换行&nbsp;
+                    <wbr>
+                    <br>
+                    7.cursor: pointer 可以同时在 IE FF 中显示游标手指状， hand 仅 IE 可以&nbsp;
+                    <wbr>
+                    <br>
+                    8.FF: 链接加边框和背景色，需设置 display: block, 同时设置 float: left 保证不换行。参照 menubar,
+                    给 a 和 menubar 设置高度是为了避免底边显示错位, 若不设 height, 可以在 menubar 中插入一个空格。
+                    <br>
+                    9.在mozilla firefox和IE中的BOX模型解释不一致导致相差2px解决方法：div{margin:30px!imp
+                    <wbr>
+                    ortant;margin:28px;}&nbsp;
+                    <wbr>
+                    <br>
+                    注意这两个margin的顺序一定不能写反，据阿捷的说法!imp
+                    <wbr>
+                    ortant这个属性IE不能识别，但别的浏览器可以识别。所以在IE下其实解释成这样：div{maring:30px;margin:28px}&nbsp;
+                    <wbr>
+                    <br>
+                    重复定义的话按照最后一个来执行，所以不可以只写margin:XXpx!imp
+                    <wbr>
+                    ortant;
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <font color="#ff0000">
+    </font>
+</body>
+</html>
