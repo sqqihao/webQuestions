@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>无标题文档</title>
+    </head>
+    <body>
+        <div class="post-text">
+            <p>下面我说明一下每个题目的出题用意和难度，最高5分。</p>
+            <h1>1. HTML和CSS</h1>
+            <h2>1.1. 用HTML写出一个如图所示的表格：</h2>
+            <p>aaaa    bbbb   cccc</p>
+            <p>dddd   eeeeeeeeee</p>
+            <p>dddd   ffffffffffffff</p>
+            <p>相同字符表示在同一个格子里。</p>
+            <blockquote>
+                <p>出这个题目的原因是，当时的B/S开发很依赖表格布局，所以写这种表格是非常基础的，需要知道rowspan和colspan。难度2分。</p>
+            </blockquote>
+            <h2>1.2. 根据下面的代码，画出它会显示出来的大概效果。如果想要把这两块里面的显示效果调换一下，在原代码上可以通过加些什么做到？</h2>
+<pre class="prettyprint"><code><span class="tag">&lt;div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;span&gt;</span><span class="pln">a</span><span class="tag">&lt;/span&gt;</span><span class="pln">
+    </span><span class="tag">&lt;span&gt;</span><span class="pln">b</span><span class="tag">&lt;/span&gt;</span><span class="pln">
+</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;div&gt;</span><span class="pln">a</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;div&gt;</span><span class="pln">b</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;/div&gt;</span></code></pre>
+            <blockquote>
+                <p>这个题目的考点是块标签，需要知道display的inline和block，难度3分。</p>
+            </blockquote>
+            <h2>1.3. 在一个form里面，默认按回车键会使得这个form提交，怎样才能取消这个事件？</h2>
+            <blockquote>
+                <p>这个题目很简单，B/S开发中经常需要把系统的提交事件改成自己的，onsubmit里面return false即可，2分。</p>
+            </blockquote>
+            <h2>1.4. 如下代码中的单选框并不能点击选中，为什么？</h2>
+<pre class="prettyprint"><code><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"radio"</span><span class="tag">/&gt;</span><span class="pln">a
+</span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"radio"</span><span class="tag">/&gt;</span><span class="pln">b
+</span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"radio"</span><span class="tag">/&gt;</span><span class="pln">c</span></code></pre>
+            <blockquote>
+                <p>这个题目稍微有些恶搞，但经常写代码的人应该不会被考住，处于一组的单选按钮，name必须相同。2分。</p>
+            </blockquote>
+            <h2>1.5. 页面中所包含的CSS样式有很多声明方式，可以是通过link标记引入的外部样式，可以是定义在页面头部的样式，也可以是在元素的style属性上定义的样式，如果这些样式对某个属性的定义冲突了，是按照什么优先级处理的？</h2>
+            <blockquote>
+                <p>这个非常基础了，行间大于本页大于外链。1分。</p>
+            </blockquote>
+            <h1>2. JavaScript</h1>
+            <h2>2.1. 有一个字符串：abcd-ef-ghi，请用JavaScript将它处理成：ghi&amp;ef&amp;abcd</h2>
+            <blockquote>
+                <p>这个可以简单可以复杂，最简单的就是先split，然后reverse，然后join。2分。</p>
+            </blockquote>
+            <h2>2.2. 说出下列三段代码的运行结果：</h2>
+<pre class="prettyprint"><code><span class="com">//Section A</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> foo</span><span class="pun">(</span><span class="pln">num</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    num </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+foo</span><span class="pun">(</span><span class="pln">a</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">(</span><span class="pln">a</span><span class="pun">);</span><span class="pln">
+</span><span class="com">//Section B</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> foo</span><span class="pun">(</span><span class="pln">obj</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    obj </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Object</span><span class="pun">();</span><span class="pln">
+    obj</span><span class="pun">.</span><span class="pln">name </span><span class="pun">=</span><span class="pln"> </span><span class="str">"abc"</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">name</span><span class="pun">:</span><span class="pln"> </span><span class="str">"test"</span><span class="pun">};</span><span class="pln">
+foo</span><span class="pun">(</span><span class="pln">a</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">(</span><span class="pln">a</span><span class="pun">.</span><span class="pln">name</span><span class="pun">);</span><span class="pln">
+</span><span class="com">//Section C</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> foo</span><span class="pun">(</span><span class="pln">obj</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    obj</span><span class="pun">.</span><span class="pln">name </span><span class="pun">=</span><span class="pln"> </span><span class="str">"abc"</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">name</span><span class="pun">:</span><span class="pln"> </span><span class="str">"test"</span><span class="pun">};</span><span class="pln">
+foo</span><span class="pun">(</span><span class="pln">a</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">(</span><span class="pln">a</span><span class="pun">.</span><span class="pln">name</span><span class="pun">);</span></code></pre>
+            <blockquote>
+                <p>这个题目的考点是引用，简单变量跟对象属性的差别。3分。</p>
+            </blockquote>
+            <h2>2.3. 用JavaScript模拟Java的StringBuffer类，用以实现效率较高的字符串的连接，包含两个方法：append()和toString()</h2>
+            <blockquote>
+                <p>这个题目在现在已经变味了，当年在IE中，用加号连接字符串不如数组的join，另外一个考点是简单实现一个构造函数，在原型上添加方法。4分。</p>
+            </blockquote>
+            <h2>2.4. 下面两种方式都可以给元素添加事件，请指出它们的差别：</h2>
+<pre class="prettyprint"><code><span class="pln">element</span><span class="pun">.</span><span class="pln">onclick </span><span class="pun">=</span><span class="pln"> clickHandler</span><span class="pun">;</span><span class="pln">
+element</span><span class="pun">.</span><span class="pln">attachEvent</span><span class="pun">(</span><span class="str">"onclick"</span><span class="pun">,</span><span class="pln"> clickHandler</span><span class="pun">);</span></code></pre>
+            <blockquote>
+                <p>单个跟多个事件处理函数的差别，3分。</p>
+            </blockquote>
+            <h2>2.5. 在下面这段代码里，内层的div点击的时候，会同时触发它自己和外层div的事件，怎样修改代码才能使得此时只触发内层div的事件？</h2>
+<pre class="prettyprint"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">onclick</span><span class="pun">=</span><span class="atv">"</span><span class="pln">clickA</span><span class="pun">()</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">a
+    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">onclick</span><span class="pun">=</span><span class="atv">"</span><span class="pln">clickB</span><span class="pun">()</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">b</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;script&gt;</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> clickA</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    alert</span><span class="pun">(</span><span class="str">"a"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}　
+</span><span class="kwd">function</span><span class="pln"> clickB</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    alert</span><span class="pun">(</span><span class="str">"b"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></code></pre>
+            <blockquote>
+                <p>考点是事件的冒泡，b里面取消冒泡即可，3分</p>
+            </blockquote>
+            <h1>3. 综合</h1>
+            <h2>3.1. 设计一个界面，它包含两个下拉列表，第一个包含有三个省份，分别是江苏、福建、安徽，第二个显示的是城市，其选项根据第一个所选内容动态改变。当选择江苏时，它包含南京、苏州、南通；当选择福建时，它包含福州、漳州、泉州；当选择安徽时，它包含合肥、蚌埠、安庆。</h2>
+            <blockquote>
+                <p>没什么好说的，只要干过活的就会。2分。</p>
+            </blockquote>
+            <h2>3.2. 用JavaScript生成本月日历，形式为表格，从星期天到星期六每天占一列，星期天的单元格背景为红色，星期六的单元格背景为绿色。</h2>
+            <blockquote>
+                <p>循环生成一个table就可以了，3分。</p>
+            </blockquote>
+            <h2>3.3. 写一段JavaScript代码，循环生成10个按钮，每个按钮上面分别显示数字0-9，每个按钮点击之后分别显示自身序号。</h2>
+            <blockquote>
+                <p>这个里面有陷阱，在循环中添加事件，并且把序号带进去，会导致执行的时候序号全部是最后一个，这是因为事件绑定的时间跟执行时间不同，执行的时候，作用域里面的循环变量已经是最后一个了。解决办法至少有两种，如果把变量附加到按钮上，可以得4分。如果用闭包带变量过去，可以得5分。</p>
+            </blockquote>
+            <p>总的来说，这些题目还是比较基础的，而且在当时比较有代表性，如果都能答出来，算是一个概念很清晰的人，能及格的话，就可以招进来干活了。 </p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>IE_compitable</title>
+</head>
+<style>
+code{
+	display:block;
+}
+</style>
+<script>
+window.onload = function() {
+	var aCode = document.getElementsByTagName("code");
+	for(var i=0, len = aCode.length; i<len;) {
+		var eCode = aCode[i++];
+		eCode.innerHTML = eCode.innerHTML.replace(/[<>'"]/g,function($0) {
+			if($0 === "<")return "&lt;";
+			if($0 === ">")return "&gt;";
+			if($0 === "\"" || $0 === "\'")return "&quot;";
+		});
+	};
+};
+</script>
+<body>
+    <h3>
+        1.新的 HTML5 文档类型和字符集是？
+    </h3>
+    <p>
+        HTML5 文档类型很简单：
+        <code>
+            &lt;!doctype html&gt;
+        </code>
+        <br>
+        HTML5 使用 UTF-8 编码示例：
+        <code>
+            &lt;meta charset="UTF-8"&gt;
+        </code>
+    </p>
+    
+    
+    <h3>
+    	2.HTML5 中如何嵌入音频？
+    </h3>
+    <p>
+    	HTML5 支持 MP3、Wav 和 Ogg 格式的音频，下面是在网页中嵌入音频的简单示例：
+        <code>
+            <audio controls>
+                <source src="jamshed.mp3" type="audio/mpeg">
+                Your browser does’nt support audio embedding feature.
+            </audio>
+        </code>
+    </p>
+    
+    
+    
+    
+    <h3>
+    	3、HTML5 中如何嵌入视频<br>
+		和音频类似，HTML5 支持 MP4、WebM 和 Ogg 格式的视频，下面是简单示例：
+    </h3>
+    <p> 
+    	<code>
+            <video width="450" height="340" controls>
+              <source src="jamshed.mp4" type="video/mp4">
+               Your browser does’nt support video embedding feature.
+            </video>
+        </code>
+    </p>
+    
+    
+    
+    
+    <h3>
+    	4,除了 audio 和 video,HTML5 还有哪些媒体标签？
+    </h3>
+    <p>
+    	<code>
+            HTML5 对于多媒体提供了强有力的支持，除了 audio 和 video 标签外，还支持以下标签：
+    
+            <embed> 标签定义嵌入的内容，比如插件
+            <embed type="video/quicktime" src="Fishing.mov">
+        </code>
+        <br>
+    	<code>
+            <source> 对于定义多个数据源很有用。
+            <video width="450" height="340" controls>
+                 <source src="jamshed.mp4" type="video/mp4">
+                 <source src="jamshed.ogg" type="video/ogg">
+            </video>
+            <track> 标签为诸如 video 元素之类的媒介规定外部文本轨道。 用于规定字幕文件或其他包含文本的文件，当媒介播放时，这些文件是可见的。
+       	</code>
+        <br>
+        <code>
+            <video width="450" height="340" controls>
+                 <source src="jamshed.mp4" type="video/mp4">
+                 <source src="jamshed.ogg" type="video/ogg">
+                 <track kind="subtitles" label="English" src="jamshed_en.vtt" srclang="en" default></track>
+                  <track kind="subtitles" label="Arabic" src="jamshed_ar.vtt" srclang="ar"></track>
+            </video>
+        </code>
+    </p>
+    
+    
+    
+    
+    <h3>
+    	HTML5 存储类型有什么区别？
+    </h3>
+    <p>
+    	HTML5 能够本地存储数据，在之前都是使用 cookies 使用的。HTML5 提供了下面两种本地存储方案：
+		<br>
+		localStorage 用于持久化的本地存储，数据永远不会过期，关闭浏览器也不会丢失。
+        <br>
+		sessionStorage 同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储
+    </p>
+    
+    
+    <h3>
+    	HTML5 有哪些新增的表单元素？
+    </h3>
+    <p>
+    	datalist
+        <br>
+        datetime
+        <br>
+        output
+        <br>
+        keygen 
+        <br>
+        date 
+        <br>
+        month 
+        <br>
+        week
+        <br>
+        time
+        <br>
+        color
+        <br>
+        number 
+        <br>
+        range 
+        <br>
+        email 
+        <br>
+        url
+    </p>
+    <h3>
+    	HTML5 标准提供了哪些新的 API？
+    </h3>
+    <p>
+    	Media API
+        <br>
+        Text Track API
+        <br>
+        Application Cache API
+        <br>
+        User Interaction
+        <br>
+        Data Transfer API
+        <br>
+        Command API
+        <br>
+        Constraint Validation API
+        <br>
+        History API
+    </p>
+</body>
+</html>
