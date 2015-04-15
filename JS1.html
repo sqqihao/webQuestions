@@ -1458,6 +1458,23 @@
     <p>
         （4） 客户端资源调度，比如麦克风，摄像头
     </p>
+    <div>
+        <pre>
+            var a = {n: 1}
+            var b = a;
+            a.x = a = {n: 2}
+            console.log(a.x);
+            console.log(b.x)
+        </pre>
+    </div>
+    <div>
+        <pre>
+            var F = function(){};
+            Object.prototype.a = function(){};
+            Function.prototype.b = function(){};
+            var f = new F();
+        </pre>
+    </div>
 </div>
 </body>
 </html>
